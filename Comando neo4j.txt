@@ -1,0 +1,73 @@
+create(t1:Time {name: 'barcelona'})
+create(t2:Time {name: 'real madri'})
+create(t3:Time {name: 'porto'})
+
+create(j1:Jogadores {name: 'Andre luiz', data: '10/10/2005'})
+create(j2:Jogadores {name: 'Paulo roberto', data: '10/11/1985'})
+create(j3:Jogadores {name: 'Romario', data: '01/10/1986'})
+create(j4:Jogadores {name: 'Luiz fabiano', data: '02/10/2001'})
+
+
+create(c1:Pessoa {name: 'Paulo roberto', data: '10/11/1985'})
+create(c2:Pessoa {name: 'Romario', data: '01/10/1986'})
+create(c4:Pessoa {name: 'Andre luiz', data: '10/10/2005'})
+create(c3:Pessoa {name: 'Luiz fabiano', data: '02/10/2001'})
+
+MATCH (n: Segunda rodada)
+ DETACH DELETE n
+
+
+
+
+
+create(p1:Partida {name: 'Primeira'})
+create(p2:Partida {name: 'Segunda'})
+create(p3:Partida {name: 'Terceira'})
+
+create(gol:Gol {name: 'Primeiro gol'})
+create(gol1:Gol {name: 'Segundo gol'})
+create(gol2:Gol {name: 'Terceiro gol'})
+
+
+
+
+
+
+
+MATCH
+(j9:Jogadores),
+(t9:Time) 
+WHERE j9.name = 'Paulo roberto' AND t9.name = 'Porto' 
+CREATE (j9)-[r:RELTYPE]->(t9)
+return type(r)
+
+
+MATCH
+(t7:Time),
+(p3:Partida) 
+WHERE t7.name = 'real madri' AND p3.name = 'Primeira' 
+CREATE (t7)-[r:RELTYPE]->(p3)
+return type(r)
+
+MATCH
+(t3:Time),
+(p2:Partida) 
+WHERE t3.name = 'Porto' AND p2.name = 'Primeira' 
+CREATE (t3)-[r:RELTYPE]->(p2)
+return type(r)
+
+MATCH
+(j8:Jogadores),
+(c1:Pessoa)
+(c2:Pessoa)
+WHERE c2.name = 'Pessoas' AND J.name = 'D' 
+CREATE (c)-[r:RELTYPE]->(d)
+return type(r)
+
+
+MATCH
+(jr:Jogadores),
+(pr:Pessoa) 
+WHERE jr.name = 'Romario' AND pr.name = 'Pessoas' 
+CREATE (jr)-[r:Person]->(pr)
+return type(r)
